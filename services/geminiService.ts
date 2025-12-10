@@ -4,7 +4,7 @@ import { Recipe, NutritionProfile, NutritionPlan } from '../types';
 // Initialize Gemini Client
 // We assume process.env.API_KEY is available. 
 // If not, the app handles the error gracefully in the UI.
-const apiKey = process.env.API_KEY || '';
+const apiKey = import.meta.env.VITE_API_KEY || '';
 const ai = new GoogleGenAI({ apiKey });
 
 const modelId = 'gemini-2.5-flash';
