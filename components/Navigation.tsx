@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, ChefHat, ShoppingCart, BookOpen } from 'lucide-react';
+import { Home, ChefHat, ShoppingCart, BookOpen, Users } from 'lucide-react';
 import { ViewState } from '../types';
 
 interface NavigationProps {
@@ -10,8 +10,9 @@ interface NavigationProps {
 export const Navigation: React.FC<NavigationProps> = ({ currentView, setView }) => {
   const navItems: { id: ViewState; label: string; icon: React.ElementType }[] = [
     { id: 'home', label: 'Inicio', icon: Home },
-    { id: 'fridge', label: 'Mi Nevera', icon: ChefHat },
+    { id: 'fridge', label: 'Nevera', icon: ChefHat },
     { id: 'recipes', label: 'Recetas', icon: BookOpen },
+    { id: 'forum', label: 'Comunidad', icon: Users },
     { id: 'prices', label: 'Ahorro', icon: ShoppingCart },
   ];
 
@@ -24,12 +25,12 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView }) 
             <button
               key={item.id}
               onClick={() => setView(item.id)}
-              className={`flex flex-col items-center justify-center w-full h-full transition-colors duration-200 ${
+              className={`flex flex-col items-center justify-center w-full h-full transition-colors duration-200 px-1 ${
                 isActive ? 'text-orange-500' : 'text-gray-400 hover:text-gray-600'
               }`}
             >
-              <item.icon size={24} strokeWidth={isActive ? 2.5 : 2} />
-              <span className="text-xs mt-1 font-medium">{item.label}</span>
+              <item.icon size={22} strokeWidth={isActive ? 2.5 : 2} />
+              <span className="text-[10px] mt-1 font-medium tracking-tight">{item.label}</span>
             </button>
           );
         })}

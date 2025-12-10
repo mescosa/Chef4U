@@ -34,4 +34,23 @@ export interface ChatMessage {
   isError?: boolean;
 }
 
-export type ViewState = 'home' | 'fridge' | 'recipes' | 'prices';
+export interface Comment {
+  id: string;
+  author: string;
+  text: string;
+  timestamp: string;
+}
+
+export interface ForumPost {
+  id: string;
+  author: string;
+  avatar: string;
+  content: string;
+  category: 'General' | 'Dudas' | 'Presumir Plato';
+  likes: number;
+  timestamp: string;
+  comments: Comment[];
+  likedByMe?: boolean;
+}
+
+export type ViewState = 'home' | 'fridge' | 'recipes' | 'forum' | 'prices';

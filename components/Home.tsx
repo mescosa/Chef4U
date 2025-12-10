@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles, TrendingUp, ChefHat } from 'lucide-react';
+import { ArrowRight, Sparkles, TrendingUp, ChefHat, Users } from 'lucide-react';
 import { ViewState } from '../types';
 
 interface HomeProps {
@@ -45,7 +45,21 @@ export const Home: React.FC<HomeProps> = ({ setView }) => {
                 </div>
             </div>
 
-            {/* Feature Card 2: Prices */}
+            {/* Feature Card 2: Forum (New) */}
+            <div 
+                onClick={() => setView('forum')}
+                className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow group"
+            >
+                <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 group-hover:scale-110 transition-transform">
+                    <Users size={24} />
+                </div>
+                <div>
+                    <h3 className="font-bold text-gray-800">Comunidad Chef4U</h3>
+                    <p className="text-xs text-gray-500">Comparte trucos y debate recetas</p>
+                </div>
+            </div>
+
+            {/* Feature Card 3: Prices */}
             <div 
                 onClick={() => setView('prices')}
                 className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow group"
@@ -59,7 +73,7 @@ export const Home: React.FC<HomeProps> = ({ setView }) => {
                 </div>
             </div>
 
-            {/* Feature Card 3: AI Chat (Actually links to generic chat part of recipes for now, or new view) */}
+            {/* Feature Card 4: AI Chat */}
             <div 
                 onClick={() => setView('recipes')}
                 className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow group"

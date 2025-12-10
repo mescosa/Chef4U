@@ -4,6 +4,7 @@ import { Home } from './components/Home';
 import { FridgeChef } from './components/FridgeChef';
 import { PriceComparator } from './components/PriceComparator';
 import { RecipeFeed } from './components/RecipeFeed';
+import { Forum } from './components/Forum';
 import { ViewState } from './types';
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
         return <FridgeChef />;
       case 'recipes':
         return <RecipeFeed />;
+      case 'forum':
+        return <Forum />;
       case 'prices':
         return <PriceComparator />;
       default:
