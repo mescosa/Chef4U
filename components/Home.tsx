@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles, TrendingUp, ChefHat, Users } from 'lucide-react';
+import { ArrowRight, Sparkles, TrendingUp, ChefHat, Users, Activity } from 'lucide-react';
 import { ViewState } from '../types';
 
 interface HomeProps {
@@ -28,63 +28,77 @@ export const Home: React.FC<HomeProps> = ({ setView }) => {
       </div>
 
       <div className="px-5">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">¿Qué quieres hacer hoy?</h2>
+        <h2 className="text-xl font-bold text-gray-800 mb-4">Herramientas</h2>
         
-        <div className="grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-2 gap-4">
             {/* Feature Card 1: Fridge */}
             <div 
                 onClick={() => setView('fridge')}
-                className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow group"
+                className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-3 cursor-pointer hover:shadow-md transition-shadow group"
             >
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 group-hover:scale-110 transition-transform">
                     <ChefHat size={24} />
                 </div>
                 <div>
-                    <h3 className="font-bold text-gray-800">Cocina con lo que tienes</h3>
-                    <p className="text-xs text-gray-500">Recetas basadas en tus ingredientes</p>
+                    <h3 className="font-bold text-gray-800 text-sm">Mi Nevera</h3>
+                    <p className="text-[10px] text-gray-500 leading-tight mt-1">Recetas con lo que tienes</p>
                 </div>
             </div>
 
-            {/* Feature Card 2: Forum (New) */}
+             {/* Feature Card 2: Nutritionist (New) */}
+             <div 
+                onClick={() => setView('nutritionist')}
+                className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-3 cursor-pointer hover:shadow-md transition-shadow group"
+            >
+                <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform">
+                    <Activity size={24} />
+                </div>
+                <div>
+                    <h3 className="font-bold text-gray-800 text-sm">Nutricionista</h3>
+                    <p className="text-[10px] text-gray-500 leading-tight mt-1">Planes personalizados</p>
+                </div>
+            </div>
+
+            {/* Feature Card 3: Forum */}
             <div 
                 onClick={() => setView('forum')}
-                className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow group"
+                className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-3 cursor-pointer hover:shadow-md transition-shadow group"
             >
                 <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 group-hover:scale-110 transition-transform">
                     <Users size={24} />
                 </div>
                 <div>
-                    <h3 className="font-bold text-gray-800">Comunidad Chef4U</h3>
-                    <p className="text-xs text-gray-500">Comparte trucos y debate recetas</p>
-                </div>
-            </div>
-
-            {/* Feature Card 3: Prices */}
-            <div 
-                onClick={() => setView('prices')}
-                className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow group"
-            >
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
-                    <TrendingUp size={24} />
-                </div>
-                <div>
-                    <h3 className="font-bold text-gray-800">Comparador de Precios</h3>
-                    <p className="text-xs text-gray-500">Encuentra el súper más barato</p>
+                    <h3 className="font-bold text-gray-800 text-sm">Comunidad</h3>
+                    <p className="text-[10px] text-gray-500 leading-tight mt-1">Comparte y aprende</p>
                 </div>
             </div>
 
             {/* Feature Card 4: AI Chat */}
             <div 
                 onClick={() => setView('recipes')}
-                className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow group"
+                className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-3 cursor-pointer hover:shadow-md transition-shadow group"
             >
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform">
                     <Sparkles size={24} />
                 </div>
                 <div>
-                    <h3 className="font-bold text-gray-800">Pregúntale al Chef AI</h3>
-                    <p className="text-xs text-gray-500">Dudas, trucos y consejos 24/7</p>
+                    <h3 className="font-bold text-gray-800 text-sm">Chat Chef</h3>
+                    <p className="text-[10px] text-gray-500 leading-tight mt-1">Preguntas y dudas</p>
                 </div>
+            </div>
+        </div>
+
+        {/* Feature Wide Card: Prices */}
+        <div 
+            onClick={() => setView('prices')}
+            className="mt-4 bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow group"
+        >
+            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
+                <TrendingUp size={24} />
+            </div>
+            <div>
+                <h3 className="font-bold text-gray-800">Comparador de Precios</h3>
+                <p className="text-xs text-gray-500">Encuentra el súper más barato</p>
             </div>
         </div>
 

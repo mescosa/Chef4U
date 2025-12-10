@@ -53,4 +53,23 @@ export interface ForumPost {
   likedByMe?: boolean;
 }
 
-export type ViewState = 'home' | 'fridge' | 'recipes' | 'forum' | 'prices';
+export interface NutritionProfile {
+  age: string;
+  weight: string;
+  height: string;
+  goal: 'Perder peso' | 'Ganar músculo' | 'Mantenerse';
+  speed: 'Rápido' | 'Moderado' | 'Lento';
+}
+
+export interface NutritionPlan {
+  summary: string;
+  recommendations: string[];
+  menu: {
+    day: string;
+    breakfast: string;
+    lunch: string;
+    dinner: string;
+  }[];
+}
+
+export type ViewState = 'home' | 'fridge' | 'recipes' | 'forum' | 'prices' | 'nutritionist';

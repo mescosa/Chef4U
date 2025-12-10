@@ -5,6 +5,7 @@ import { FridgeChef } from './components/FridgeChef';
 import { PriceComparator } from './components/PriceComparator';
 import { RecipeFeed } from './components/RecipeFeed';
 import { Forum } from './components/Forum';
+import { Nutritionist } from './components/Nutritionist';
 import { ViewState } from './types';
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
         return <RecipeFeed />;
       case 'forum':
         return <Forum />;
+      case 'nutritionist':
+        return <Nutritionist />;
       case 'prices':
         return <PriceComparator />;
       default:
@@ -32,11 +35,11 @@ function App() {
       <main className="max-w-md mx-auto min-h-screen bg-white shadow-2xl relative overflow-hidden">
         {/* Header (Simplified) */}
         <header className="px-5 py-4 bg-white sticky top-0 z-30 flex justify-between items-center bg-opacity-90 backdrop-blur-md">
-            <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-tr from-orange-500 to-red-500 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+            <div className="flex items-center gap-2" onClick={() => setView('home')}>
+                <div className="w-8 h-8 bg-gradient-to-tr from-orange-500 to-red-500 rounded-lg flex items-center justify-center text-white font-bold text-lg cursor-pointer">
                     C
                 </div>
-                <span className="font-bold text-xl tracking-tight text-gray-800">Chef4U</span>
+                <span className="font-bold text-xl tracking-tight text-gray-800 cursor-pointer">Chef4U</span>
             </div>
             {/* API Key Warning if missing, hidden in production if Env is set properly, 
                 but good for development feedback */}

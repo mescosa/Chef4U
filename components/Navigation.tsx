@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, ChefHat, ShoppingCart, BookOpen, Users } from 'lucide-react';
+import { Home, ChefHat, BookOpen, Users, Activity } from 'lucide-react';
 import { ViewState } from '../types';
 
 interface NavigationProps {
@@ -12,8 +12,8 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView }) 
     { id: 'home', label: 'Inicio', icon: Home },
     { id: 'fridge', label: 'Nevera', icon: ChefHat },
     { id: 'recipes', label: 'Recetas', icon: BookOpen },
+    { id: 'nutritionist', label: 'Nutrición', icon: Activity },
     { id: 'forum', label: 'Comunidad', icon: Users },
-    { id: 'prices', label: 'Ahorro', icon: ShoppingCart },
   ];
 
   return (
