@@ -40,7 +40,10 @@ function App() {
                 <div className="shadow-md border border-gray-200 rounded-lg p-1">
                     <img src={logoChef} alt="Chef4U Logo" className="w-10 h-10 rounded-lg object-contain" />
                 </div>
-                <span className="font-bold text-xl tracking-tight text-gray-800">Chef4U - Personaliza tu cocina con IA</span>
+                <div className="flex flex-col">
+                    <span className="font-bold text-xl tracking-tight text-gray-800">Chef4U</span>
+                    <span className="text-xs text-gray-500">Personaliza tu cocina con IA</span>
+                </div>
             </div>
         </header>
 
