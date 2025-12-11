@@ -217,10 +217,11 @@ export const searchProductPrices = async (productName: string): Promise<any | nu
   if (!apiKey) return null;
 
   const prompt = `
-    Actúa como un comparador de precios en tiempo real para España.
-    Busca estimaciones de precio actuales para el producto: "${productName}".
-    Genera 3 o 4 precios distintos para supermercados populares (Mercadona, Carrefour, Lidl, Dia, Alcampo).
-    Los precios deben ser realistas para la fecha actual.
+    Busca en internet los precios actuales (HOY) en España para el producto: "${productName}".
+    Busca específicamente en las webs de supermercados como Mercadona, Carrefour, Lidl, Dia, Alcampo.
+    Extrae el precio real más reciente que encuentres.
+    Genera una lista comparativa con al menos 3 supermercados.
+    Si no encuentras el precio exacto, busca un producto muy similar y marca como estimado.
     Devuelve un objeto JSON con el nombre formateado, categoría, un emoji representativo y la lista de precios.
   `;
 
@@ -231,6 +232,7 @@ export const searchProductPrices = async (productName: string): Promise<any | nu
       config: {
         responseMimeType: "application/json",
         responseSchema: productPriceSchema,
+        tools: [{ googleSearch: {} }]
       }
     });
 
