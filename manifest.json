@@ -1,0 +1,40 @@
+{
+  "name": "Chef4U - Cocina Inteligente",
+  "short_name": "Chef4U",
+  "description": "Tu asistente de cocina inteligente. Recetas fáciles con lo que tienes en casa y nutrición personalizada con IA.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#1F2937",
+  "background_color": "#FFFFFF",
+  "icons": [
+    {
+      "src": "./assets/Logo_Chef4U.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/Logo_Chef4U.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/Logo_Chef4U.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["food", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "./assets/Logo_Chef4U.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}
