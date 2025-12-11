@@ -36,16 +36,9 @@ function App() {
         {/* Header (Simplified) */}
         <header className="px-5 py-4 bg-white sticky top-0 z-30 flex justify-between items-center bg-opacity-90 backdrop-blur-md">
             <div className="flex items-center gap-2" onClick={() => setView('home')}>
-                <div className="w-8 h-8 bg-gradient-to-tr from-orange-500 to-red-500 rounded-lg flex items-center justify-center text-white font-bold text-lg cursor-pointer">
-                    C
-                </div>
+                <img src="/assets/Logo_Chef4U.jpg" alt="Chef4U Logo" className="w-8 h-8 rounded-lg cursor-pointer object-cover" />
                 <span className="font-bold text-xl tracking-tight text-gray-800 cursor-pointer">Chef4U</span>
             </div>
-            {/* API Key Warning if missing, hidden in production if Env is set properly, 
-                but good for development feedback */}
-            {!process.env.API_KEY && (
-                <span className="text-[10px] bg-red-100 text-red-600 px-2 py-1 rounded">No API Key</span>
-            )}
         </header>
 
         {/* Content */}
