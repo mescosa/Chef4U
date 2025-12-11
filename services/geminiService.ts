@@ -229,10 +229,10 @@ export const searchProductPrices = async (productName: string): Promise<any | nu
     const response = await ai.models.generateContent({
       model: modelId,
       contents: prompt,
+      tools: [{ googleSearch: {} }],
       config: {
         responseMimeType: "application/json",
         responseSchema: productPriceSchema,
-        tools: [{ googleSearch: {} }]
       }
     });
 
