@@ -65,6 +65,28 @@ const ingredientsSchema: Schema = {
   description: "Lista de ingredientes identificados en la imagen"
 };
 
+const productPriceSchema: Schema = {
+  type: Type.OBJECT,
+  properties: {
+    name: { type: Type.STRING },
+    category: { type: Type.STRING },
+    image: { type: Type.STRING, description: "Un emoji que represente el producto" },
+    prices: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          supermarket: { type: Type.STRING },
+          price: { type: Type.NUMBER },
+          logo: { type: Type.STRING, description: "Emoji del supermercado" }
+        },
+        required: ['supermarket', 'price', 'logo']
+      }
+    }
+  },
+  required: ['name', 'category', 'image', 'prices']
+};
+
 export const generateRecipesFromIngredients = async (ingredients: string[]): Promise<Recipe[]> => {
   if (!apiKey) throw new Error("API Key faltante");
 
@@ -207,5 +229,36 @@ export const getDailyTip = async (): Promise<string> => {
   } catch (error) {
     console.error("Error getting daily tip:", error);
     return "Tip: Planifica tus comidas para evitar desperdicios.";
+  }
+};
+
+export const searchProductPrices = async (productName: string): Promise<any | null> => {
+  if (!apiKey) return null;
+
+  const prompt = `
+    Actúa como un comparador de precios en tiempo real para España.
+    Busca estimaciones de precio actuales para el producto: "${productName}".
+    Genera 3 o 4 precios distintos para supermercados populares (Mercadona, Carrefour, Lidl, Dia, Alcampo).
+    Los precios deben ser realistas para la fecha actual.
+    Devuelve un objeto JSON con el nombre formateado, categoría, un emoji representativo y la lista de precios.
+  `;
+
+  try {
+    const response = await ai.models.generateContent({
+      model: modelId,
+      contents: prompt,
+      config: {
+        responseMimeType: "application/json",
+        responseSchema: productPriceSchema,
+      }
+    });
+
+    const text = response.text;
+    if (!text) return null;
+
+    return JSON.parse(text);
+  } catch (error) {
+    console.error("Error searching prices:", error);
+    return null;
   }
 };
