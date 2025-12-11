@@ -1,0 +1,22 @@
+export const KITCHEN_HACKS = [
+    "Si te sobra pan, córtalo en cubitos y tuéstalo con ajo para hacer crutones.",
+    "Para que los huevos duros se pelen fácil, añade vinagre al agua de cocción.",
+    "Revive la lechuga mustia sumergiéndola en agua con hielo por 10 minutos.",
+    "Congela las hierbas frescas en cubiteras con aceite de oliva para usarlas luego.",
+    "Limpia tu tabla de cortar con limón y sal para eliminar olores.",
+    "Usa el agua de cocer pasta para espesar tus salsas, el almidón es magia.",
+    "Si la sopa está salada, añade una patata pelada para que absorba el exceso.",
+    "Mantén el guacamole verde poniéndole el hueso o un poco de agua encima.",
+    "Ralla mantequilla congelada para incorporarla fácil a masas de repostería.",
+    "Envuelve el tallo de los plátanos con film para que duren más tiempo.",
+    "Usa hilo dental (sin menta) para cortar quesos blandos o pasteles perfectamente.",
+    "Para exprimir más jugo de un limón, ruédalo antes o mételo 10s al microondas.",
+    "Guarda las cebollas en medias de nylon para que duren meses sin pudrirse.",
+    "Haz tu propio 'buttermilk' mezclando leche con una cucharada de vinagre o limón.",
+    "Usa una cuchara para pelar jengibre fácilmente sin desperdiciar nada.",
+    "Coloca una cuchara de madera sobre la olla para evitar que el agua hirviendo se derrame.",
+    "Si se te quema el arroz, pon una rebanada de pan blanco encima para quitar el olor a quemado.",
+    "Acelera la maduración de aguacates poniéndolos en una bolsa de papel con un plátano.",
+    "Usa pinzas de ropa para cerrar bolsas de snacks abiertas y mantenerlos crujientes.",
+    "Limpia el microondas calentando un bol con agua y limón por 3 minutos."
+];

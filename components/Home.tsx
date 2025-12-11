@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles, TrendingUp, ChefHat, Users, Activity, Lightbulb } from 'lucide-react';
-import { getDailyTip } from '../services/geminiService';
+import { KITCHEN_HACKS } from '../utils/tipsData';
 import { ViewState } from '../types';
 
 interface HomeProps {
@@ -8,33 +8,12 @@ interface HomeProps {
 }
 
 export const Home: React.FC<HomeProps> = ({ setView }) => {
-    const [dailyTip, setDailyTip] = useState("Cargando tip del día...");
+    const [dailyTip, setDailyTip] = useState("Cargando truco...");
 
     useEffect(() => {
-        const loadTip = async () => {
-            const today = new Date().toDateString();
-            const storedDate = localStorage.getItem('dailyTipDate');
-            const storedTip = localStorage.getItem('dailyTip');
-
-            if (storedDate === today && storedTip) {
-                setDailyTip(storedTip);
-            } else {
-                try {
-                    // Si no hay tip o expiró, cargamos uno nuevo
-                    // Ponemos un fallback temporal mientras carga
-                    if (!storedTip) setDailyTip("Buscando el mejor consejo para hoy...");
-
-                    const newTip = await getDailyTip();
-                    setDailyTip(newTip);
-                    localStorage.setItem('dailyTip', newTip);
-                    localStorage.setItem('dailyTipDate', today);
-                } catch (e) {
-                    setDailyTip("Tip: ¡Cocinar con música hace que la comida sepa mejor!");
-                }
-            }
-        };
-
-        loadTip();
+        // Select a random tip on mount
+        const randomTip = KITCHEN_HACKS[Math.floor(Math.random() * KITCHEN_HACKS.length)];
+        setDailyTip(randomTip);
     }, []);
 
     return (
@@ -132,13 +111,13 @@ export const Home: React.FC<HomeProps> = ({ setView }) => {
                     </div>
                 </div>
 
-                {/* Daily Tip */}
+                {/* Daily Tip / Truco */}
                 <div className="mt-8 bg-yellow-50 border border-yellow-100 rounded-2xl p-5 relative overflow-hidden">
                     <div className="absolute top-0 right-0 -mt-2 -mr-2 text-yellow-200">
                         <Sparkles size={64} opacity={0.5} />
                     </div>
                     <h3 className="font-bold text-yellow-800 mb-1 relative z-10 flex items-center gap-2">
-                        <Lightbulb size={18} /> Tip del Día
+                        <Lightbulb size={18} /> Truco Chef4U
                     </h3>
                     <p className="text-sm text-yellow-700 relative z-10 font-medium">
                         {dailyTip}

@@ -211,26 +211,7 @@ export const identifyIngredientsFromImage = async (base64Image: string): Promise
   }
 };
 
-export const getDailyTip = async (): Promise<string> => {
-  if (!apiKey) return "Tip: ¡Cocinar en casa ahorra dinero y es más saludable!";
 
-  const prompt = "Dame un consejo de cocina, ahorro o nutrición muy breve (max 2 frases) para estudiantes. Que sea útil y curioso. Tono joven.";
-
-  try {
-    const response = await ai.models.generateContent({
-      model: modelId,
-      contents: prompt,
-      config: {
-        responseMimeType: "text/plain",
-      }
-    });
-
-    return response.text?.trim() || "Tip: Usa las sobras para crear nuevos platos creativos.";
-  } catch (error) {
-    console.error("Error getting daily tip:", error);
-    return "Tip: Planifica tus comidas para evitar desperdicios.";
-  }
-};
 
 export const searchProductPrices = async (productName: string): Promise<any | null> => {
   if (!apiKey) return null;
