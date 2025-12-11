@@ -19,13 +19,13 @@ const recipeSchema: Schema = {
       description: { type: Type.STRING },
       time: { type: Type.STRING, description: "Tiempo estimado, ej: '15 min'" },
       difficulty: { type: Type.STRING, enum: ['Fácil', 'Medio', 'Difícil'] },
-      ingredients: { 
-        type: Type.ARRAY, 
-        items: { type: Type.STRING } 
+      ingredients: {
+        type: Type.ARRAY,
+        items: { type: Type.STRING }
       },
-      steps: { 
-        type: Type.ARRAY, 
-        items: { type: Type.STRING } 
+      steps: {
+        type: Type.ARRAY,
+        items: { type: Type.STRING }
       },
       calories: { type: Type.STRING, description: "Calorías estimadas por ración" }
     },
@@ -59,6 +59,12 @@ const nutritionSchema: Schema = {
   required: ['summary', 'recommendations', 'menu']
 };
 
+const ingredientsSchema: Schema = {
+  type: Type.ARRAY,
+  items: { type: Type.STRING },
+  description: "Lista de ingredientes identificados en la imagen"
+};
+
 export const generateRecipesFromIngredients = async (ingredients: string[]): Promise<Recipe[]> => {
   if (!apiKey) throw new Error("API Key faltante");
 
@@ -83,7 +89,7 @@ export const generateRecipesFromIngredients = async (ingredients: string[]): Pro
 
     const text = response.text;
     if (!text) return [];
-    
+
     const recipes = JSON.parse(text) as Omit<Recipe, 'id'>[];
     return recipes.map((r, index) => ({ ...r, id: `gen-${Date.now()}-${index}` }));
   } catch (error) {
@@ -92,7 +98,7 @@ export const generateRecipesFromIngredients = async (ingredients: string[]): Pro
   }
 };
 
-export const chatWithChef = async (history: {role: string, parts: {text: string}[]}[], message: string): Promise<string> => {
+export const chatWithChef = async (history: { role: string, parts: { text: string }[] }[], message: string): Promise<string> => {
   if (!apiKey) return "Por favor configura tu API KEY para hablar con el chef.";
 
   try {
@@ -142,6 +148,46 @@ export const generateNutritionPlan = async (profile: NutritionProfile): Promise<
     return JSON.parse(text) as NutritionPlan;
   } catch (error) {
     console.error("Nutrition plan error:", error);
+    throw error;
+  }
+};
+throw error;
+  }
+};
+
+export const identifyIngredientsFromImage = async (base64Image: string): Promise<string[]> => {
+  if (!apiKey) throw new Error("API Key faltante");
+
+  // Limpiar el base64 header si existe (e.g. "data:image/jpeg;base64,")
+  const cleanBase64 = base64Image.replace(/^data:image\/(png|jpeg|jpg|webp);base64,/, '');
+
+  const prompt = "Identifica los ingredientes de comida visibles en esta imagen. Ignora recipientes vacíos o no comestibles. Devuelve solo la lista en español.";
+
+  try {
+    const response = await ai.models.generateContent({
+      model: modelId,
+      contents: [
+        {
+          role: 'user',
+          parts: [
+            { text: prompt },
+            { inlineData: { mimeType: "image/jpeg", data: cleanBase64 } }
+          ]
+        }
+      ],
+      config: {
+        responseMimeType: "application/json",
+        responseSchema: ingredientsSchema,
+        systemInstruction: "Eres un experto identificando ingredientes de cocina.",
+      }
+    });
+
+    const text = response.text;
+    if (!text) return [];
+
+    return JSON.parse(text) as string[];
+  } catch (error) {
+    console.error("Error identifying ingredients:", error);
     throw error;
   }
 };
