@@ -151,9 +151,6 @@ export const generateNutritionPlan = async (profile: NutritionProfile): Promise<
     throw error;
   }
 };
-throw error;
-  }
-};
 
 export const identifyIngredientsFromImage = async (base64Image: string): Promise<string[]> => {
   if (!apiKey) throw new Error("API Key faltante");
