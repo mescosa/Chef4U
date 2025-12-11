@@ -122,7 +122,7 @@ export const generateNutritionPlan = async (profile: NutritionProfile): Promise<
   if (!apiKey) throw new Error("API Key faltante");
 
   const prompt = `
-    Crea un plan nutricional breve de 3 días para una persona con este perfil:
+    Crea un plan nutricional breve de 5 días para una persona con este perfil:
     - Edad: ${profile.age} años
     - Peso: ${profile.weight} kg
     - Altura: ${profile.height} cm
@@ -186,5 +186,26 @@ export const identifyIngredientsFromImage = async (base64Image: string): Promise
   } catch (error) {
     console.error("Error identifying ingredients:", error);
     throw error;
+  }
+};
+
+export const getDailyTip = async (): Promise<string> => {
+  if (!apiKey) return "Tip: ¡Cocinar en casa ahorra dinero y es más saludable!";
+
+  const prompt = "Dame un consejo de cocina, ahorro o nutrición muy breve (max 2 frases) para estudiantes. Que sea útil y curioso. Tono joven.";
+
+  try {
+    const response = await ai.models.generateContent({
+      model: modelId,
+      contents: prompt,
+      config: {
+        responseMimeType: "text/plain",
+      }
+    });
+
+    return response.text?.trim() || "Tip: Usa las sobras para crear nuevos platos creativos.";
+  } catch (error) {
+    console.error("Error getting daily tip:", error);
+    return "Tip: Planifica tus comidas para evitar desperdicios.";
   }
 };
