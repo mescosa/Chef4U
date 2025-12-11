@@ -7,6 +7,7 @@ import { RecipeFeed } from './components/RecipeFeed';
 import { Forum } from './components/Forum';
 import { Nutritionist } from './components/Nutritionist';
 import { ViewState } from './types';
+import logoChef from './assets/Logo_Chef4U.jpg';
 
 function App() {
   const [currentView, setView] = useState<ViewState>('home');
@@ -35,9 +36,9 @@ function App() {
       <main className="max-w-md mx-auto min-h-screen bg-white shadow-2xl relative overflow-hidden">
         {/* Header (Simplified) */}
         <header className="px-5 py-4 bg-white sticky top-0 z-30 flex justify-between items-center bg-opacity-90 backdrop-blur-md">
-            <div className="flex items-center gap-2" onClick={() => setView('home')}>
-                <img src="/assets/Logo_Chef4U.jpg" alt="Chef4U Logo" className="w-8 h-8 rounded-lg cursor-pointer object-cover" />
-                <span className="font-bold text-xl tracking-tight text-gray-800 cursor-pointer">Chef4U</span>
+            <div className="flex items-center gap-2 cursor-pointer" onClick={() => setView('home')}>
+                <img src={logoChef} alt="Chef4U Logo" className="w-10 h-10 rounded-lg object-contain" />
+                <span className="font-bold text-xl tracking-tight text-gray-800">Chef4U</span>
             </div>
         </header>
 
