@@ -37,10 +37,10 @@ function App() {
         {/* Header (Simplified) */}
         <header className="px-5 py-4 bg-white sticky top-0 z-30 flex justify-between items-center bg-opacity-90 backdrop-blur-md">
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => setView('home')}>
-                <div className="shadow-md rounded-lg p-1">
+                <div className="shadow-md border border-gray-200 rounded-lg p-1">
                     <img src={logoChef} alt="Chef4U Logo" className="w-10 h-10 rounded-lg object-contain" />
                 </div>
-                <span className="font-bold text-xl tracking-tight text-gray-800">Chef4U</span>
+                <span className="font-bold text-xl tracking-tight text-gray-800">Chef4U - Personaliza tu cocina con IA</span>
             </div>
         </header>
 
