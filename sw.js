@@ -3,7 +3,7 @@ const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/assets/Logo_Chef4U.png'
+  '/assets/Logo_Chef4U.jpg'
 ];
 
 // Install event - cachear assets estáticos
