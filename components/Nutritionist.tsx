@@ -77,7 +77,7 @@ export const Nutritionist: React.FC = () => {
             {/* Menu */}
             <div>
                 <h3 className="font-bold text-gray-800 mb-3 px-1 flex items-center">
-                    <Calendar className="text-green-600 mr-2" size={20} /> Menú Sugerido (3 Días)
+                    <Calendar className="text-green-600 mr-2" size={20} /> Menú Sugerido (5 Días)
                 </h3>
                 <div className="space-y-4">
                     {plan.menu.map((day, idx) => (
